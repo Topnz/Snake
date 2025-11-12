@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -25,6 +25,7 @@ body{
     width: 80vh;
     background-color: #74c476;
     box-shadow: 0 0 25px 25px #a1d99b;
+    border: 3px solid #148f39;
 }
 
 .score-container{
@@ -37,6 +38,7 @@ body{
     font-size: 3vh;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+    border-bottom: 3px solid #148f39;
 }
 
 .game-container{
@@ -49,9 +51,10 @@ body{
 .food{
     background-image: url("pictures/apple.png");
     background-size: cover;
-    border: white;
 }
 
 .snake{
-    background-color: rgb(51, 174, 88);
+    background-color: #31a354;
+    border: 3px solid #148f39;
+    border-radius: 7.5px;
 }
