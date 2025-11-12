@@ -13,6 +13,7 @@ body{
     justify-content: center;
 }
 
+
 .container{
     height: 80vh;
     width: 80vh;
@@ -30,7 +31,6 @@ body{
     font-size: 3vh;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-
 }
 
 .game-container{
@@ -41,8 +41,9 @@ body{
 }
 
 .food{
-    background-color: rgb(212, 16, 16);
-    border-radius: 50%;
+    background-image: url("pictures/apple.png");
+    background-size: cover;
+    border: white;
 }
 
 .snake{
