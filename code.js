@@ -88,7 +88,7 @@ document.addEventListener("keydown",function(e){
     }else if(key == ("ArrowDown" || key == "s") && directionY != -1){
         directionX = 0;
         directionY = 1;
-    }else if(key == ("ArrowRight" || key == "d" && directionX != -1)){
+    }else if(key == ("ArrowRight" || key == "d") && directionX != -1){
         directionX = 1;
         directionY = 0;
     }
