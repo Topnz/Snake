@@ -79,17 +79,17 @@ setInterval(renderGame,200);
 document.addEventListener("keydown",function(e){
     scoreContainer.innerHTML = "Score: " + score;  
     let key = e.key;
-    if(key == ("ArrowUp" || key == "w") && directionY != 1){
-        directionX = 0;
-        directionY = -1;
-    }else if(key == ("ArrowLeft" || key == "a") && directionX != 1){
-        directionX = -1;
-        directionY = 0;
-    }else if(key == ("ArrowDown" || key == "s") && directionY != -1){
-        directionX = 0;
-        directionY = 1;
-    }else if(key == ("ArrowRight" || key == "d") && directionX != -1){
-        directionX = 1;
-        directionY = 0;
+    if ((key == "ArrowUp" || key == "w") && directionY != 1) {
+    directionX = 0;
+    directionY = -1;
+    } else if ((key == "ArrowLeft" || key == "a") && directionX != 1) {
+    directionX = -1;
+    directionY = 0;
+    } else if ((key == "ArrowDown" || key == "s") && directionY != -1) {
+    directionX = 0;
+    directionY = 1;
+    } else if ((key == "ArrowRight" || key == "d") && directionX != -1) {
+    directionX = 1;
+    directionY = 0;
     }
 })
