@@ -51,6 +51,22 @@ body{
     box-sizing: border-box;
 }
 
+.game-container.hidden {
+    display: none;
+}   
+
+.menu-container{
+    height: 72vh; /* (height .score-container) - (height .container) */
+    width: 80vh;
+    display: grid;
+    grid-template: repeat(18,1fr) / repeat(20,1fr);
+    box-sizing: border-box;
+}
+
+.menu-container.hidden {
+    display: none;
+}
+
 .food{
     background-image: url("pictures/apple.png");
     background-size: cover;
@@ -60,4 +76,32 @@ body{
     background-color: #31a354;
     border: 3px solid #148f39;
     border-radius: 7.5px;
+}
+
+.snake-head{
+    background-color: #145c32;
+    border: 3px solid #145c32;
+    border-radius: 7.5px;
+}
+
+
+/* Difficulty Buttons */
+.easy{
+    background-color: #a1d99b;
+}
+
+.intermediate{
+    background-color: #a1d99b;
+}
+
+.hard{
+    background-color: #a1d99b;
+}
+
+.extreme{
+    background-color: #a1d99b;
+}
+
+.impossible{
+    background-color: #a1d99b;
 }
