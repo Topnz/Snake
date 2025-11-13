@@ -12,6 +12,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .nav{
@@ -21,11 +22,12 @@ body{
 }
 
 .container{
-    height: 80vh;
-    width: 80vh;
+    height: 80vh + 3px; /* + 3px ensures correct alignment with border on the bottom, due to issue with round up/down pixel with CSS grid */
+    width: 80vh + 3px; /* + 3px ensures correct alignment with border on the right, due to issue with round up/down pixel with CSS grid */
     background-color: #74c476;
     box-shadow: 0 0 25px 25px #a1d99b;
     border: 3px solid #148f39;
+    box-sizing: border-box;
 }
 
 .score-container{
@@ -46,6 +48,7 @@ body{
     width: 80vh;
     display: grid;
     grid-template: repeat(18,1fr) / repeat(20,1fr);
+    box-sizing: border-box;
 }
 
 .food{

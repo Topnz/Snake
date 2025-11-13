@@ -32,7 +32,17 @@ function gameOver(){
     snakeBody = [];
     score = 0;
     scoreContainer.innerHTML = "Press any button to start snaking!";
-    alert("Game Over!")
+    audio.pause();
+    audio.currentTime = 0;
+    gameStarted = false; 
+
+    //Game over sound effect
+    let audioGameOver = new Audio('audio/game_over.mp3');
+    audioGameOver.play();
+  
+    setTimeout(() => {
+        alert("Game Over!")
+    }, 200);
 }
 
 
@@ -45,6 +55,10 @@ function renderGame(){
         spawnFood();
         score+=1;
         scoreContainer.innerHTML = "Score: " + score;
+
+        //Eating sound effect
+        let audioEat = new Audio('audio/eatingfood.mp3');
+        audioEat.play();
     }
 
     headX+=directionX;
@@ -76,7 +90,21 @@ function renderGame(){
 spawnFood();
 setInterval(renderGame,200);
 
+
+//Background music for the game
+let audio = new Audio('audio/background-music.mp3');
+audio.loop = true;
+audio.volume = 0.25;
+let gameStarted = false; 
+
+
+
 document.addEventListener("keydown",function(e){
+    if (!gameStarted && ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","w","a","s","d"].includes(e.key)) {
+        gameStarted = true;
+        audio.play();
+    }
+
     scoreContainer.innerHTML = "Score: " + score;  
     let key = e.key;
     if ((key == "ArrowUp" || key == "w") && directionY != 1) {
