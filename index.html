@@ -1,28 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <nav class="nav"><img src="pictures/snakebanner.png" alt="snakebanner"></nav>
-    <div class="container">
-        <div class="score-container">Press any button to start snaking!</div>
-        <div class="game-container"></div> 
-        <div class="menu-container">
-            <h1>
-                PYTHON SNAKE GAME
-            </h1>
-            <button class="easy">EASY</button>
-            <button class="intermediate">INTERMEDIATE</button>
-            <button class="hard ">HARD</button>
-            <button class="extreme">EXTREME</button>
-            <button class="impossible">IMPOSSIBLE</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Snake</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <img src="pictures/snakebanner.png" alt="snakebanner" />
+    </nav>
 
+    <div class="container">
+      <div class="score-container">
+        <span class="score-text">Press any button to start snaking!</span>
+        <button class="mute-btn">MUTE</button>
+      </div>
+
+      <div class="game-container"></div>
+
+      <!-- Menu -->
+      <div class="menu-container">
+        <div class="menu-card">
+          <h1>PYTHON SNAKE GAME</h1>
+          <p class="menu-subtitle">
+            Choose your difficulty and start slithering.
+          </p>
+
+          <div class="menu-buttons">
+            <button class="difficulty-btn easy">Easy</button>
+            <button class="difficulty-btn intermediate">Intermediate</button>
+            <button class="difficulty-btn hard">Hard</button>
+            <button class="difficulty-btn extreme">Extreme</button>
+            <button class="difficulty-btn impossible">Impossible</button>
+          </div>
+
+          <div class="scoreboard">
+            <h2>High Scores</h2>
+            <ol class="scoreboard-list"></ol>
+          </div>
         </div>
+      </div>
+
+      <!-- Pause overlay -->
+      <div class="pause-overlay hidden">
+        <div class="pause-box">
+          <h2>Game Paused</h2>
+          <p>Press SPACE to resume</p>
+        </div>
+      </div>
+
+      <!-- Controls box -->
+      <div class="controls-box">
+        <h3>Controls</h3>
+        <p><b>W A S D</b> – Move</p>
+        <p><b>Arrow Keys</b> – Move</p>
+        <p><b>SPACE</b> – Start / Pause</p>
+        <p><b>M</b> – Mute / Unmute</p>
+      </div>
     </div>
+
     <script src="code.js"></script>
-</body>
+  </body>
 </html>
