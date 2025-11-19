@@ -3,16 +3,19 @@ let scoreContainer = document.querySelector(".score-container");
 let scoreText = document.querySelector(".score-text");
 let menuContainer = document.querySelector(".menu-container");
 
+// Difficulty buttons
 let easyButton = document.querySelector(".easy");
 let intermediateButton = document.querySelector(".intermediate");
 let hardButton = document.querySelector(".hard");
 let extremeButton = document.querySelector(".extreme");
 let impossibleButton = document.querySelector(".impossible");
 
+// UI elements for mute, scoreboard, and pause overlay
 let muteBtn = document.querySelector(".mute-btn");
 let scoreboardList = document.querySelector(".scoreboard-list");
 let pauseOverlay = document.querySelector(".pause-overlay");
 
+// High score data (session only)
 let highScores = [];
 const MAX_SCORES = 5;
 
@@ -24,6 +27,7 @@ let directionX = 0,
 let snakeBody = [];
 let score = 0;
 
+//Background music for the game
 let audio = new Audio("audio/background-music.mp3");
 audio.loop = true;
 audio.volume = 0.25;
@@ -50,13 +54,17 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
+//Opens menuscreen on first load
 gameContainer.classList.add("hidden");
 menuContainer.classList.remove("hidden");
 
 function spawnFood() {
+  /** Math.floor to set random number to a whole number rounded down. Indexing at 0 hence +1 */
   spawnX = Math.floor(Math.random() * 20) + 1;
   spawnY = Math.floor(Math.random() * 18) + 1;
 
+  /** Loops through spawning places making sure there isn't a part of the snake
+        and then spawns in a different location if there is a part of the snake there */
   for (let i = 0; i < snakeBody.length; i++) {
     if (snakeBody[i][0] == spawnX && snakeBody[i][1] == spawnY) {
       spawnFood();
@@ -123,6 +131,7 @@ function gameOver() {
   audio.pause();
   audio.currentTime = 0;
 
+  //Game over sound effect
   if (!muted) {
     let audioGameOver = new Audio("audio/game_over.mp3");
     let _ = audioGameOver.play();
@@ -136,6 +145,8 @@ function gameOver() {
   }, 200);
 }
 
+/** Food random generating on load/refresh using change of CSS style.
+    Grid size is X-Axis = 20 * Y-Axis = 18 */
 function renderGame() {
   if (!gameStarted) return;
   if (paused) return; // don't update while paused
@@ -148,6 +159,7 @@ function renderGame() {
     score += 1;
     scoreText.textContent = "Score: " + score;
 
+    //Eating sound effect
     if (!muted) {
       let audioEat = new Audio("audio/eatingfood.mp3");
       let _ = audioEat.play();
@@ -160,11 +172,13 @@ function renderGame() {
   snakeBody.pop();
   snakeBody.unshift([headX, headY]);
 
+  /** Checks for border collision */
   if (headX == 0 || headY == 0 || headX == 21 || headY == 19) {
     gameOver();
     return;
   }
 
+  /** Checks for collision on snake body */
   for (let i = 1; i < snakeBody.length; i++) {
     if (
       snakeBody[0][0] == snakeBody[i][0] &&
@@ -175,6 +189,7 @@ function renderGame() {
     }
   }
 
+  /** Adds to the lenght of the snake's array */
   for (let i = 0; i < snakeBody.length; i++) {
     if (i == 0) {
       updatedGame += `<div class="snake-head" style="grid-area: ${snakeBody[i][1]}/${snakeBody[i][0]};"></div>`;
@@ -264,6 +279,8 @@ document.addEventListener("keydown", function (e) {
     directionY = 0;
   }
 });
+
+/* Difficulty buttons setting different game speeds */
 
 let gameInterval = null;
 let previousButton = null;

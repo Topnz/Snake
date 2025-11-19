@@ -1,3 +1,6 @@
+/* --------------------------------------------------------
+   BASIC RESET + GLOBAL SETTINGS
+-------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +10,8 @@
 html,
 body {
   height: 100%;
-  overflow: hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden; /* prevents page from scrolling */
+  font-family: system-ui, sans-serif;
 }
 
 body {
@@ -24,11 +26,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   padding-top: 2vh;
 }
 
-/* Top banner */
+/* --------------------------------------------------------
+   TOP BANNER (SNAKE IMAGE)
+-------------------------------------------------------- */
 .nav {
   display: flex;
   align-items: center;
@@ -38,11 +41,12 @@ body {
 
 .nav img {
   max-width: 70vw;
-  height: auto;
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
 }
 
-/* Main game frame */
+/* --------------------------------------------------------
+   GAME CONTAINER (GREEN BOX)
+-------------------------------------------------------- */
 .container {
   position: relative;
   height: calc(80vh + 3px);
@@ -51,12 +55,14 @@ body {
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
   border-radius: 18px;
   border: 3px solid #148f39;
-  overflow: visible;
+  overflow: visible; /* allows controls box to appear outside */
   display: flex;
   flex-direction: column;
 }
 
-/* Top score bar */
+/* --------------------------------------------------------
+   SCORE BAR (TOP BAR)
+-------------------------------------------------------- */
 .score-container {
   height: 8vh;
   width: 100%;
@@ -65,77 +71,59 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 2vh;
-  font-size: 2.4vh;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
   color: #f7fcf5;
+  font-family: "Courier New", monospace;
+  font-size: 2.4vh;
+  font-weight: bold;
   border-bottom: 3px solid #145c32;
-  z-index: 2;
 }
 
 .score-text {
   flex: 1;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Mute button */
+/* Mute button (top right) */
 .mute-btn {
   padding: 0.6vh 1.8vh;
   font-size: 1.8vh;
   border-radius: 999px;
   border: 2px solid #0b3d1c;
-  background-color: #f7fcf5;
-  color: #145c32;
   cursor: pointer;
+  background: #f7fcf5;
+  color: #145c32;
   font-weight: 600;
-  letter-spacing: 0.03em;
-  transition: 0.12s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  transition: 0.12s;
 }
 
-.mute-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
-  background-color: #e5f5e0;
-}
-
-.mute-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Game grid */
+/* --------------------------------------------------------
+   GAME GRID (THE PLAYFIELD)
+-------------------------------------------------------- */
 .game-container {
   height: 72vh;
   width: 80vh;
   display: grid;
   grid-template: repeat(18, 1fr) / repeat(20, 1fr);
-  box-sizing: border-box;
 }
 
 .game-container.hidden {
   display: none;
 }
 
-/* Menu screen */
+/* --------------------------------------------------------
+   MAIN MENU (DIFFICULTY + SCOREBOARD)
+-------------------------------------------------------- */
 .menu-container {
   position: absolute;
-  left: 0;
   top: 8vh;
-  height: 72vh;
+  left: 0;
+  height: 72vh; /* (height .score-container) - (height .container) */
   width: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2vh;
-  background: radial-gradient(
-    circle at top,
-    #edf8e9 0,
-    #c7e9c0 50%,
-    #a1d99b 100%
-  );
+  background: radial-gradient(circle, #edf8e9, #c7e9c0);
   z-index: 3;
 }
 
@@ -146,27 +134,13 @@ body {
 .menu-card {
   width: 100%;
   max-width: 340px;
-  background-color: rgba(255, 255, 255, 0.96);
-  border-radius: 16px;
   padding: 2.2vh;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 16px;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
   gap: 2vh;
-}
-
-.menu-card h1 {
-  font-size: 3vh;
-  text-align: center;
-  letter-spacing: 0.12em;
-  font-weight: 800;
-  color: #145c32;
-}
-
-.menu-subtitle {
-  text-align: center;
-  font-size: 1.8vh;
-  color: #555;
 }
 
 /* Difficulty buttons */
@@ -174,88 +148,66 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.2vh;
-  margin-top: 1vh;
 }
 
 .difficulty-btn {
   padding: 1.2vh 1.6vh;
+  background: linear-gradient(135deg, #a1d99b, #74c476);
   border-radius: 999px;
-  border: 2px solid transparent;
-  cursor: pointer;
   font-size: 1.9vh;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #a1d99b, #74c476);
-  color: #0b3d1c;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: 0.12s ease;
-}
-
-.difficulty-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: 0.12s;
 }
 
 .difficulty-btn.active {
   background: linear-gradient(135deg, #f16913, #d94801);
   color: #fff;
-  border-color: #7f2704;
 }
 
-/* Snake + food */
+/* --------------------------------------------------------
+   SNAKE + FOOD GRAPHICS
+-------------------------------------------------------- */
 .food {
   background-image: url("pictures/apple.png");
   background-size: cover;
 }
 
 .snake {
-  background-color: #31a354;
+  background: #31a354;
   border: 3px solid #148f39;
   border-radius: 7.5px;
 }
 
 .snake-head {
-  background-color: #145c32;
+  background: #145c32;
   border: 3px solid #145c32;
   border-radius: 7.5px;
 }
 
-/* Scoreboard */
+/* --------------------------------------------------------
+   SCOREBOARD (MENU)
+-------------------------------------------------------- */
 .scoreboard {
-  margin-top: 1vh;
-  padding: 1.8vh 1.6vh;
-  border-radius: 12px;
+  padding: 1.6vh;
   background: #f7fcf5;
+  border-radius: 12px;
   border: 1px solid #c7e9c0;
 }
 
-.scoreboard h2 {
-  margin-bottom: 1vh;
-  font-size: 2.2vh;
-  color: #145c32;
-}
-
-.scoreboard-list {
-  margin-left: 2.4vh;
-  font-size: 1.9vh;
-  color: #333;
-}
-
-.scoreboard-list li {
-  padding: 0.15vh 0;
-}
-
-/* Pause overlay */
+/* --------------------------------------------------------
+   PAUSE OVERLAY
+-------------------------------------------------------- */
 .pause-overlay {
   position: absolute;
-  left: 0;
   top: 8vh;
+  left: 0;
   width: 80vh;
   height: 72vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background: rgba(0, 0, 0, 0.35);
   z-index: 4;
 }
@@ -264,32 +216,14 @@ body {
   display: none;
 }
 
-.pause-box {
-  background: #f7fcf5;
-  border-radius: 16px;
-  padding: 2.5vh 3vh;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  text-align: center;
-  border: 2px solid #145c32;
-}
-
-.pause-box h2 {
-  font-size: 2.6vh;
-  margin-bottom: 1vh;
-  color: #145c32;
-}
-
-.pause-box p {
-  font-size: 1.9vh;
-  color: #333;
-}
-
-/* Controls box */
+/* --------------------------------------------------------
+   CONTROLS BOX (next to game)
+-------------------------------------------------------- */
 .controls-box {
   position: absolute;
-  top: 8vh;
-  left: 100%;
-  margin-left: 2vh;
+  top: 8vh; /* aligns with top of game */
+  left: 100%; /* place immediately to the right of game */
+  margin-left: 2vh; /* spacing gap */
 
   width: 20vh;
   background: #f7fcf5;
@@ -298,14 +232,13 @@ body {
   padding: 1.8vh;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
   font-size: 1.8vh;
-  z-index: 10;
+  z-index: 10; /* keep above everything */
 }
 
 .controls-box h3 {
   text-align: center;
-  color: #145c32;
   margin-bottom: 1vh;
-  font-size: 2vh;
+  color: #145c32;
 }
 
 .controls-box p {
