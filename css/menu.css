@@ -1,0 +1,53 @@
+.menu-container {
+  height: 72vh; /* (height .score-container) - (height .container) */
+  width: 80vh;
+}
+
+.menu-container.hidden {
+  display: none;
+}
+
+#title-section {
+  margin: 50px;
+  border: 2px solid #148f39;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.highscore-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#controls {
+  padding: 17px;
+}
+
+.difficulty-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+button {
+  font-weight: bold;
+  height: 50px;
+  background-color: #a1d99b;
+  flex-basis: 7rem;
+  border: 2px solid #148f39;
+  border-radius: 5px;
+}
+
+.tutorial-container {
+  margin: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pressed {
+  background-color: #148f39;
+}

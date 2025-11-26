@@ -1,84 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Basic page metadata and responsive settings -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Page title (shown in browser tab) -->
-    <title>Python Snake</title>
-
-    <!-- Link to external stylesheet -->
-    <link rel="stylesheet" href="styles.css" />
+    <title>Python</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/game.css" />
   </head>
   <body>
-    <!-- Top navigation/banner area containing the snake image -->
     <nav class="nav">
       <img src="pictures/snakebanner.png" alt="snakebanner" />
     </nav>
-
-    <!-- Main game wrapper (green box that contains everything) -->
     <div class="container">
-      <!-- Top score bar: shows current score / messages + mute button -->
-      <div class="score-container">
-        <!-- Dynamic score/status text updated by JS -->
-        <span class="score-text">Press any button to start snaking!</span>
-
-        <!-- Mute button (also toggled via "M" key) -->
-        <button class="mute-btn">MUTE</button>
-      </div>
-
-      <!-- Actual game grid (where snake and food are rendered) -->
+      <div class="score-container">Press any button to start snaking!</div>
       <div class="game-container"></div>
-
-      <!-- Menu overlay shown before the game starts and after game over -->
       <div class="menu-container">
-        <div class="menu-card">
-          <!-- Title text inside menu card -->
-          <h1>PYTHON SNAKE GAME</h1>
-
-          <!-- Short descriptive text below title -->
-          <p class="menu-subtitle">
-            Choose your difficulty and start slithering.
-          </p>
-
-          <!-- Difficulty buttons: set game speed via JS -->
-          <div class="menu-buttons">
-            <button class="difficulty-btn easy">Easy</button>
-            <button class="difficulty-btn intermediate">Intermediate</button>
-            <button class="difficulty-btn hard">Hard</button>
-            <button class="difficulty-btn extreme">Extreme</button>
-            <button class="difficulty-btn impossible">Impossible</button>
-          </div>
-
-          <!-- High score list displayed in the menu -->
-          <div class="scoreboard">
-            <h2>High Scores</h2>
-            <!-- Populated by JS with <li> entries -->
-            <ol class="scoreboard-list"></ol>
-          </div>
+        <div>
+          <section id="title-section">
+            <h1>PYTHON SNAKE GAME</h1>
+          </section>
         </div>
-      </div>
-
-      <!-- Semi-transparent overlay shown when the game is paused -->
-      <div class="pause-overlay hidden">
-        <div class="pause-box">
-          <h2>Game Paused</h2>
-          <p>Press SPACE to resume</p>
+        <div class="highscore-container">
+          <h3 id="highscore">Highscore:</h3>
         </div>
-      </div>
-
-      <!-- Controls box displayed to the right of the game window -->
-      <div class="controls-box">
-        <h3>Controls</h3>
-        <p><b>W A S D</b> – Move</p>
-        <p><b>Arrow Keys</b> – Move</p>
-        <p><b>SPACE</b> – Start / Pause</p>
-        <p><b>M</b> – Mute / Unmute</p>
+        <div>
+          <img
+            id="controls"
+            src="./pictures/controls.png"
+            alt="WASD and arrow controls"
+          />
+        </div>
+        <div class="difficulty-container">
+          <button class="easy">EASY</button>
+          <button class="intermediate">INTERMEDIATE</button>
+          <button class="hard">HARD</button>
+          <button class="extreme">EXTREME</button>
+          <button class="impossible">IMPOSSIBLE</button>
+        </div>
+        <div class="tutorial-container">
+          <h1>HOW TO PLAY:</h1>
+          <h3>
+            WELCOME TO THE PYTHON SNAKE GAME!
+            <br />
+            PICK YOUR DIFFICULTY AND USE THE SHOWN KEYS TO START SNAKING!
+          </h3>
+        </div>
       </div>
     </div>
-
-    <!-- Main game logic script -->
-    <script src="code.js"></script>
+    <script src="./js/snake.js"></script>
+    <script src="./js/menu.js"></script>
   </body>
 </html>
