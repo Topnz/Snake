@@ -41,7 +41,7 @@ function buttonClicked(event) {
   }
 
   let difficulty = null;
-  if (event.target === null) {
+  if (event.target == null) {
     difficulty = difficultyStorage;
   } else difficulty = event.target.classList[0];
 
