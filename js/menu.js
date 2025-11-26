@@ -7,6 +7,9 @@ let impossibleButton = document.querySelector(".impossible");
 let highscoreElement = document.querySelector("#highscore");
 
 let highscore = localStorage.getItem("highscore");
+if (highscore === null) {
+  highscore = 0;
+}
 highscoreElement.textContent = "Highscore: " + highscore;
 
 //Opens menuscreen on first load
@@ -19,7 +22,7 @@ let gameInterval = null;
 let previousButton = null;
 
 let difficultyStorage = localStorage.getItem("difficulty");
-if (difficultyStorage == null) {
+if (difficultyStorage === null) {
   difficultyStorage = "easy";
 }
 buttonClicked(difficultyStorage);
@@ -38,7 +41,7 @@ function buttonClicked(event) {
   }
 
   let difficulty = null;
-  if (event.target == null) {
+  if (event.target === null) {
     difficulty = difficultyStorage;
   } else difficulty = event.target.classList[0];
 

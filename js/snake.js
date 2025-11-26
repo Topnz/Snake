@@ -47,7 +47,7 @@ function gameOver() {
   // Check om highscore er null til at starte med
   // Ellers check om den er højere end sidst
   let highscore = localStorage.getItem("highscore");
-  if (highscore == null || score > highscore) {
+  if (highscore === null || score > highscore) {
     localStorage.setItem("highscore", score);
     highscoreElement.textContent = "Highscore: " + score;
   }
